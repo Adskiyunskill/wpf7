@@ -1,0 +1,15 @@
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\bin\Debug\wpf7.exe.config
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\bin\Debug\wpf7.exe
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\bin\Debug\wpf7.pdb
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\wpf7.csproj.AssemblyReference.cache
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\MainWindow.g.cs
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\App.g.cs
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\wpf7_MarkupCompile.cache
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\wpf7_MarkupCompile.lref
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\MainWindow.baml
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\wpf7.g.resources
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\wpf7.Properties.Resources.resources
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\wpf7.csproj.GenerateResource.cache
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\wpf7.csproj.CoreCompileInputs.cache
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\wpf7.exe
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\wpf7.pdb
