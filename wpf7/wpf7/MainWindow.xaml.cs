@@ -24,11 +24,12 @@ namespace wpf7
         double StartPosY;
         public MainWindow()
         {
+            
+            InitializeComponent();
             StartPosY = Canvas.GetTop(canvas1.Children[0]);
             for (int i = 0; i < 4; i++)
                 StartPosX[i] = Canvas.GetLeft(canvas1.Children[i]);
                 button1.Focus();
-            InitializeComponent();
         }
 
         private void canvas1_Drop(object sender, DragEventArgs e)
@@ -61,6 +62,7 @@ namespace wpf7
 
         private void label1_MouseDown(object sender, MouseButtonEventArgs e)
         {
+
             string s = "";
             for (int i = 0; i < 4; i++)
             {
@@ -72,15 +74,8 @@ namespace wpf7
                 return;
             mark1.Fill = Brushes.Green;
             caption1.Foreground = Brushes.Green;
-            caption1.Text = "Зоопарк открыт. Летова вернули.";
-            TextBlock t = e.Source as TextBlock;
-            if (t == null)
-                return;
-            t.Foreground = Brushes.Red;
-            if (e.ChangedButton == MouseButton.Left)
-                if (DragDrop.DoDragDrop(t, t, DragDropEffects.All) == DragDropEffects.None)
-                    t.Visibility = Visibility.Hidden;
-            t.Foreground = Brushes.Black;
+            caption1.Text = "Зоопарк открыт. Летова вернули";
+           
         }
 
         private void canvas1_DragEnter(object sender, DragEventArgs e)
@@ -152,9 +147,10 @@ namespace wpf7
                 tb.Text = "";
                 tb.Tag = "0";
            }
-           mark1.Fill = Brushes.Red;
-           caption1.Foreground = Brushes.Red;
-           caption1.Text = "Зоопарк закрыт. Летов сбежал.";
+           mark1.Fill = Brushes.Green;
+           caption1.Foreground = Brushes.Green
+                ;
+           caption1.Text = "Зоопарк открыт. Летова вернули.";
         }
     }
 }
