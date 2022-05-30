@@ -20,8 +20,14 @@ namespace wpf7
     /// </summary>
     public partial class MainWindow : Window
     {
+        double[] StartPosX = new double[4];
+        double StartPosY;
         public MainWindow()
         {
+            StartPosY = Canvas.GetTop(canvas1.Children[0]);
+            for (int i = 0; i < 4; i++)
+                StartPosX[i] = Canvas.GetLeft(canvas1.Children[i]);
+                button1.Focus();
             InitializeComponent();
         }
 
@@ -55,6 +61,18 @@ namespace wpf7
 
         private void label1_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            string s = "";
+            for (int i = 0; i < 4; i++)
+            {
+                if (canvas1.Children[i].IsVisible)
+                    return;
+                s += (grid1.Children[i] as TextBox).Text;
+            }
+            if (s == "")
+                return;
+            mark1.Fill = Brushes.Green;
+            caption1.Foreground = Brushes.Green;
+            caption1.Text = "Зоопарк открыт. Летова вернули.";
             TextBlock t = e.Source as TextBlock;
             if (t == null)
                 return;
@@ -108,6 +126,35 @@ namespace wpf7
             if (trg == null)
                 return;
             trg.Background = null;
+        }
+
+        private void Window_GiveFeedback(object sender, GiveFeedbackEventArgs e)
+        {
+            if (e.Effects == DragDropEffects.Move)
+            {
+                e.UseDefaultCursors = false;
+                Mouse.SetCursor(Cursors.Hand);
+            }
+            else
+                e.UseDefaultCursors = true;
+            e.Handled = true;
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                var t = canvas1.Children[i];
+                t.Visibility = Visibility.Visible;
+              Canvas.SetTop(t, StartPosY);
+                Canvas.SetLeft(t, StartPosX[i]);
+                var tb = grid1.Children[i] as TextBox;
+                tb.Text = "";
+                tb.Tag = "0";
+           }
+           mark1.Fill = Brushes.Red;
+           caption1.Foreground = Brushes.Red;
+           caption1.Text = "Зоопарк закрыт. Летов сбежал.";
         }
     }
 }

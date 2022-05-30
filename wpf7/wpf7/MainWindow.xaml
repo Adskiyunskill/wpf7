@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:wpf7"
         mc:Ignorable="d"
         Title="Зоопарк" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen"
-        ResizeMode="CanMinimize" MouseDown="label1_MouseDown">
+        ResizeMode="CanMinimize" MouseDown="label1_MouseDown" GiveFeedback="Window_GiveFeedback">
     <StackPanel>
         <Canvas x:Name="canvas1" Margin="10,10,10,0" Width="480" Height="240"
                 Background="LightGray" AllowDrop="True" Drop="canvas1_Drop" DragEnter="canvas1_DragEnter"
-                DragOver="canvas1_DragEnter" DragLeave="canvas1_DragLeave">
+                DragOver="canvas1_DragEnter" DragLeave="canvas1_DragLeave" >
             <TextBlock x:Name="label1" Canvas.Left="30" Text="Медведь" Canvas.Top="41" Tag="4"
                        Padding="5" />
             <TextBlock x:Name="label2" Canvas.Left="130" Text="Волк" Canvas.Top="41" Tag="3"
@@ -27,5 +27,11 @@
             <TextBox Text="" IsReadOnly="True" Background="Gray" Tag="0"/>
             <TextBox Text="" IsReadOnly="True" Background="Gray" Tag="0"/>
         </UniformGrid>
+        <Button x:Name="button1" HorizontalAlignment="Center" Margin="0,0,0,10" Click="button1_Click">
+            <StackPanel Margin="5,0" Orientation="Horizontal">
+                <Ellipse x:Name="mark1" Margin="5" Fill="Red" Width="15" Height="15"/>
+                <TextBlock x:Name="caption1" Margin="5" Foreground="Red"  Text="Зоопарк закрыт. Летов сбежал."/>
+            </StackPanel>
+        </Button>
     </StackPanel>
 </Window>
