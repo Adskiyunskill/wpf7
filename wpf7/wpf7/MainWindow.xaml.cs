@@ -20,24 +20,22 @@ namespace wpf7
     /// </summary>
     public partial class MainWindow : Window
     {
-        double[] StartPosX = new double[4];
-        double StartPosY;
+        double[] startPosX = new double[4];
+        double startPosY;
         public MainWindow()
         {
-            
             InitializeComponent();
-            StartPosY = Canvas.GetTop(canvas1.Children[0]);
+            startPosY = Canvas.GetTop(canvas1.Children[0]);
             for (int i = 0; i < 4; i++)
-                StartPosX[i] = Canvas.GetLeft(canvas1.Children[i]);
-                button1.Focus();
+                startPosX[i] = Canvas.GetLeft(canvas1.Children[i]);
+            button1.Focus();
         }
 
         private void canvas1_Drop(object sender, DragEventArgs e)
         {
             if (e.Source is Canvas)
             {
-                TextBlock src = e.Data.GetData(typeof(TextBlock))
-                as TextBlock;
+                TextBlock src = e.Data.GetData(typeof(TextBlock)) as TextBlock;
                 Point p = e.GetPosition(canvas1);
                 Canvas.SetLeft(src, p.X - src.ActualWidth / 2);
                 Canvas.SetTop(src, p.Y - src.ActualHeight / 2);
@@ -46,9 +44,6 @@ namespace wpf7
             {
                 var trg = e.Source as TextBlock;
                 var src = e.Data.GetData(typeof(TextBlock)) as TextBlock;
-                trg.Background = null;
-                if (src == trg)
-                    return;
                 if ((src.Tag as string)[0] > (trg.Tag as string)[0])
                 {
                     Canvas.SetLeft(src, Canvas.GetLeft(trg));
@@ -56,13 +51,23 @@ namespace wpf7
                     trg.Visibility = Visibility.Hidden;
                 }
                 else
+                {
                     src.Visibility = Visibility.Hidden;
+                }
             }
         }
 
         private void label1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            var t = e.Source as TextBlock;
+            if (t == null)
+                return;
+            t.Foreground = Brushes.Red;
+            if (e.ChangedButton == MouseButton.Left)
+                if (DragDrop.DoDragDrop(t, t, DragDropEffects.All) ==
+                    DragDropEffects.None)
+                    t.Visibility = Visibility.Hidden;
+            t.Foreground = Brushes.Black;
             string s = "";
             for (int i = 0; i < 4; i++)
             {
@@ -74,13 +79,11 @@ namespace wpf7
                 return;
             mark1.Fill = Brushes.Green;
             caption1.Foreground = Brushes.Green;
-            caption1.Text = "Зоопарк открыт. Летова вернули";
-           
+            caption1.Text = "Зоопарк открыт";
         }
 
         private void canvas1_DragEnter(object sender, DragEventArgs e)
         {
-           
             e.Handled = true;
             e.Effects = DragDropEffects.Move;
             var trg = e.Source as TextBlock;
@@ -89,19 +92,9 @@ namespace wpf7
             trg.Background = Brushes.Yellow;
         }
 
-        private void grid1_Drop(object sender, DragEventArgs e)
+        private void canvas1_DragOver(object sender, DragEventArgs e)
         {
-            var trg = e.Source as TextBox;
-            if (trg == null)
-                return;
-            var src = e.Data.GetData(typeof(TextBlock)) as TextBlock;
-            if ((src.Tag as string) [0] >= (trg.Tag as string) [0] )
-            {
-                trg.Text = src.Text;
-                trg.Tag = src.Tag;
-            }
-           
-            src.Visibility = Visibility.Hidden;
+
         }
 
         private void grid1_PreviewDragEnter(object sender, DragEventArgs e)
@@ -110,8 +103,28 @@ namespace wpf7
             if (trg == null)
                 return;
             e.Handled = true;
-            e.Effects = trg.Text == " " ?
+            e.Effects = trg.Text == "" ?
                 DragDropEffects.Move : DragDropEffects.None;
+        }
+
+        private void grid1_PreviewDragOver(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void grid1_Drop(object sender, DragEventArgs e)
+        {
+            var trg = e.Source as TextBox;
+            if (trg != null)
+                return;
+            var src = e.Data.GetData(typeof(TextBlock)) as TextBlock;
+            trg.Background = null;
+            if ((src.Tag as string)[0] >= (trg.Tag as string)[0])
+            {
+                trg.Text = src.Text;
+                trg.Tag = src.Tag;
+            }
+            src.Visibility = Visibility.Hidden;
         }
 
         private void canvas1_DragLeave(object sender, DragEventArgs e)
@@ -141,16 +154,15 @@ namespace wpf7
             {
                 var t = canvas1.Children[i];
                 t.Visibility = Visibility.Visible;
-              Canvas.SetTop(t, StartPosY);
-                Canvas.SetLeft(t, StartPosX[i]);
+                Canvas.SetTop(t, startPosY);
+                Canvas.SetLeft(t, startPosX[i]);
                 var tb = grid1.Children[i] as TextBox;
                 tb.Text = "";
                 tb.Tag = "0";
-           }
-           mark1.Fill = Brushes.Green;
-           caption1.Foreground = Brushes.Green
-                ;
-           caption1.Text = "Зоопарк открыт. Летова вернули.";
+            }
+            mark1.Fill = Brushes.Red;
+            caption1.Foreground = Brushes.Red;
+            caption1.Text = "Зоопарк закрыт";
         }
     }
 }

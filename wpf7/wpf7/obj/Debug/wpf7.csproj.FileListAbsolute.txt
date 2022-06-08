@@ -12,3 +12,4 @@ C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\wp
 C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\wpf7.csproj.CoreCompileInputs.cache
 C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\wpf7.exe
 C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\wpf7.pdb
+C:\ProjectC#\Скворцов Дмитрий 2-2ИС\wpf7\wpf7\wpf7\obj\Debug\wpf7.csproj.AssemblyReference.cache
